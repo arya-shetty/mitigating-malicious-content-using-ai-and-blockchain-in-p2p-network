@@ -1,0 +1,2 @@
+2025-05-28 10:41:42.103814: ⚠️ File 'verybadmalware.exe' flagged as malicious. Not sent.
+2025-05-28 10:48:53.275136: ⚠️ File 'verybadmalware.exe' flagged as malicious. Not sent.

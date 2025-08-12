@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blockchain</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container p-4">
+    <h1>⛓️ Blockchain</h1>
+    <a href="/" class="btn btn-secondary mb-3">← Back</a>
+    {% for block in chain %}
+        <div class="card mb-3">
+            <div class="card-header">
+                Block #{{ block.index }}
+            </div>
+            <div class="card-body">
+                <p><strong>Timestamp:</strong> {{ block.timestamp }}</p>
+                <p><strong>Sender:</strong> {{ block.metadata.sender }}</p>
+                <p><strong>Receiver:</strong> {{ block.metadata.receiver }}</p>
+                <p><strong>File:</strong> {{ block.metadata.filename }}</p>
+            </div>
+        </div>
+    {% endfor %}
+</body>
+</html>

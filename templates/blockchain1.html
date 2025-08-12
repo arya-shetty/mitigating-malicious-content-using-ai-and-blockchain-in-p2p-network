@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Blockchain</title>
+</head>
+<body>
+  <h2>Blockchain Data</h2>
+  {% if chain %}
+    <pre>{{ chain | tojson(indent=2) }}</pre>
+  {% else %}
+    <p>No blockchain data found.</p>
+  {% endif %}
+  <br>
+  <a href="/">⬅ Back to Home</a>
+</body>
+</html>

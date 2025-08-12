@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>P2P File Sharing</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+</head>
+<body>
+  <h2>Discovered Peers</h2>
+  {% if peers %}
+    <ul>
+      {% for ip, name in peers.items() %}
+        <li>{{ name }} ({{ ip }})</li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No peers found yet.</p>
+  {% endif %}
+
+  <h2>Send File</h2>
+  <form method="post" action="/send" enctype="multipart/form-data">
+    <label>Choose Peer:</label>
+    <select name="peer_ip" required>
+      {% for ip, name in peers.items() %}
+        <option value="{{ ip }}">{{ name }} ({{ ip }})</option>
+      {% endfor %}
+    </select>
+    <br><br>
+    <label>Choose File:</label>
+    <input type="file" name="file" required>
+    <br><br>
+    <button type="submit">Send</button>
+  </form>
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <ul>
+      {% for category, message in messages %}
+        <li><strong>{{ category.title() }}:</strong> {{ message }}</li>
+      {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+
+  <br>
+  <a href="/blockchain">📜 View Blockchain</a>
+  <div class="status-log">
+  <h3>Status Log:</h3>
+  {% if log %}
+    <ul>
+      {% for entry in log %}
+        <li>{{ entry }}</li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No actions yet.</p>
+  {% endif %}
+</div>
+
+</body>
+</html>
